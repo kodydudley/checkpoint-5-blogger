@@ -7,8 +7,12 @@
         </h1>
       </div>
     </div>
-    <div class="row justify-content-around">
-      <allBlogs v-for="b in blogs" :key="b.title" :blogs-prop="b" />
+    <div class="row">
+      <div class="col-10 offset-1">
+        <div class="row">
+          <allBlogs v-for="b in blogs" :key="b.title" :blogs-prop="b" />
+        </div>
+      </div>
     </div>
   </div>
 </template>

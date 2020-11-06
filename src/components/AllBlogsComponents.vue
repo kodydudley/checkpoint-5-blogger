@@ -1,6 +1,6 @@
 <template>
-  <div class="allBlogs card bg-transparent col-3 justify-content-around">
-    <div class="my-3 justify-content-between text-center">
+  <div class="allBlogs bg-transparent col-4 justify-content-around ">
+    <div class="m-3 justify-content-between card text-center shadow-lg">
       <h1 class="text-center">
         {{ blogsProp.title }}
       </h1>
