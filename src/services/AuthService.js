@@ -2,6 +2,7 @@ import { Auth0Provider } from '@bcwdev/auth0provider-client'
 import { AppState } from '../AppState'
 import { audience, clientId, domain } from '../AuthConfig'
 import router from '../router'
+import { allBlogsService } from './AllBlogsService'
 import { setBearer } from './AxiosService'
 
 export const AuthService = Auth0Provider.initialize({
@@ -20,5 +21,6 @@ export const AuthService = Auth0Provider.initialize({
 AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   setBearer(AuthService.bearer)
   AppState.user = AuthService.user
+  allBlogsService.getAllBlogs()
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })
