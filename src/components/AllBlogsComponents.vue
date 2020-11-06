@@ -1,7 +1,7 @@
 <template>
   <div class="allBlogs bg-transparent col-4 justify-content-around ">
     <router-link :to="{name: 'ActiveBlog', params: {blogId: blogsProp.id}}">
-      <div class="m-5 text-dark justify-content-between text-center">
+      <div class="m-5 justify-content-between text-center">
         <h1 class="text-center">
           {{ blogsProp.title }}
         </h1>

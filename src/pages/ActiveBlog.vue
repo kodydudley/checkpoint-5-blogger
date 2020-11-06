@@ -10,6 +10,12 @@
         <h4 class="m-3">
           {{ activeBlog.body }}
         </h4>
+        <h2 class="m-5">
+          Comments:
+        </h2>
+        <h4>
+          <allComments v-for="c in comments" :key="c.body" :comments-prop="c" />
+        </h4>
       </div>
     </div>
   </div>
@@ -24,9 +30,13 @@ export default {
   name: 'ActiveBlog',
   setup() {
     const route = useRoute()
-    onMounted(() => { allBlogsService.getActiveBlog(route.params.blogId) })
+    onMounted(() => {
+      allBlogsService.getActiveBlog(route.params.blogId)
+      allBlogsService.getComments(route.params.blogId)
+    })
     return {
-      activeBlog: computed(() => AppState.activeBlog)
+      activeBlog: computed(() => AppState.activeBlog),
+      comments: computed(() => AppState.comments)
     }
   },
   components: {}

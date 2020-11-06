@@ -21,6 +21,25 @@ class AllBlogsService {
       console.error(error)
     }
   }
+
+  async createBlog() {
+    try {
+      AppState.allBlogs.push('/')
+      console.log(AppState.allBlogs)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async getComments(blogId) {
+    try {
+      const res = await api.get('api/blogs/' + blogId + '/comments')
+      AppState.comments = res.data.body
+      console.log(res)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }
 
 export const allBlogsService = new AllBlogsService()

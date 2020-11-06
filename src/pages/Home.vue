@@ -2,9 +2,10 @@
   <div class="home">
     <div class="row my-3">
       <div class="col-12 text-center">
-        <h1>
-          Blogs
-        </h1>
+        <h1>Blogs</h1>
+        <button class="btn bg-transparent grow">
+          <h2><i class="far fa-plus-square"></i></h2>
+        </button>
       </div>
     </div>
     <div class="row">
