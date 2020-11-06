@@ -13,9 +13,7 @@
         <h2 class="m-5">
           Comments:
         </h2>
-        <h4>
-          <allComments v-for="c in comments" :key="c.body" :comments-prop="c" />
-        </h4>
+        <allComments v-for="c in comments" :key="c.body" :comments-prop="c" />
       </div>
     </div>
   </div>
@@ -25,6 +23,7 @@
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { allBlogsService } from '../services/AllBlogsService'
+import allComments from '../components/AllCommentsComponent'
 import { AppState } from '../AppState'
 export default {
   name: 'ActiveBlog',
@@ -39,7 +38,9 @@ export default {
       comments: computed(() => AppState.comments)
     }
   },
-  components: {}
+  components: {
+    allComments
+  }
 }
 </script>
 

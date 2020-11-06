@@ -1,12 +1,18 @@
 <template>
   <div class="allComments">
-    <h5>Hello!</h5>
+    <h5>
+      {{ commentsProp.creatorEmail }}
+    </h5>
+    <h3 class="mb-4">
+      {{ commentsProp.body }}
+    </h3>
   </div>
 </template>
 
 <script>
 export default {
   name: 'AllComments',
+  props: ['commentsProp'],
   setup() {
     return {}
   },

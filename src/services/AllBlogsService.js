@@ -34,7 +34,7 @@ class AllBlogsService {
   async getComments(blogId) {
     try {
       const res = await api.get('api/blogs/' + blogId + '/comments')
-      AppState.comments = res.data.body
+      AppState.comments = res.data
       console.log(res)
     } catch (error) {
       console.error(error)
