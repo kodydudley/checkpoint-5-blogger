@@ -22,16 +22,16 @@ class AllBlogsService {
     }
   }
 
-  async createBlog(newBlog) {
+  async createBlog(title, body, published) {
     try {
-      // const blogData = {
-      //   title: title,
-      //   body: body,
-      //   published: true
-      // }
+      const newBlog = {
+        title: title,
+        body: body,
+        published: true
+      }
       const res = await api.post('api/blogs/', newBlog)
-      this.getAllBlogs()
       console.log(res)
+      this.getAllBlogs()
     } catch (error) {
       console.error(error)
     }
