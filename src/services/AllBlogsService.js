@@ -37,8 +37,9 @@ class AllBlogsService {
   async deleteBlog(blogId) {
     try {
       const res = await api.delete('api/blogs/' + blogId)
+      AppState.allBlogs = res.data
       this.getAllBlogs()
-      console.log(res)
+      console.log(res.data)
     } catch (error) {
       console.error(error)
     }
@@ -62,7 +63,7 @@ class AllBlogsService {
     try {
       const res = await api.get('api/blogs/' + blogId + '/comments')
       AppState.comments = res.data
-      console.log(res)
+      console.log(res.data)
     } catch (error) {
       console.error(error)
     }
