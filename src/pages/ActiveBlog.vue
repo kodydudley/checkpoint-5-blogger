@@ -13,7 +13,7 @@
         <h2 class="mt-5">
           Comments:
         </h2>
-        <form @submit.prevent="createComments" action="">
+        <form v-if="profile.email" @submit.prevent="createComments" action="">
           <input class="mt-3 mb-3" v-model="state.body">
           <button type="submit">
             <i class="far fa-plus-square"></i>
@@ -45,6 +45,7 @@ export default {
     })
     return {
       state,
+      profile: computed(() => AppState.profile),
       activeBlog: computed(() => AppState.activeBlog),
       comments: computed(() => AppState.comments),
       createComments() {

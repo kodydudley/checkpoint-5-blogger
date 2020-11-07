@@ -8,7 +8,7 @@
         <h6>
           Author: {{ blogsProp.creator.name }}
         </h6>
-        <button class="btn btn-danger" @click="deleteBlog">
+        <button class="btn btn-danger" v-if="blogsProp.creatorEmail == profile.email" @click="deleteBlog">
           Delete Blog
         </button>
       </div>
@@ -17,12 +17,15 @@
 </template>
 
 <script>
+import { computed } from 'vue'
+import { AppState } from '../AppState'
 // import { allBlogsService } from '../services/AllBlogsService'
 export default {
   name: 'AllBlogs',
   props: ['blogsProp'],
   setup() {
     return {
+      profile: computed(() => AppState.profile)
       // deleteBlog() {
       //   allBlogsService.deleteBlog(route.params.blogId)
       // }
