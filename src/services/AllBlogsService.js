@@ -40,6 +40,17 @@ class AllBlogsService {
       console.error(error)
     }
   }
+
+  async createComments(data) {
+    try {
+      const newComment = { body: data, blog: AppState.activeBlog.id }
+      const res = await api.post('api/comments', newComment)
+      this.getComments(AppState.activeBlog.id)
+      console.log(res)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }
 
 export const allBlogsService = new AllBlogsService()

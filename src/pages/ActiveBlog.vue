@@ -10,9 +10,15 @@
         <h4 class="m-3">
           {{ activeBlog.body }}
         </h4>
-        <h2 class="m-5">
+        <h2 class="mt-5">
           Comments:
         </h2>
+        <form @submit.prevent="createComments" action="">
+          <input class="mt-3 mb-3" v-model="state.body">
+          <button type="submit">
+            <i class="far fa-plus-square"></i>
+          </button>
+        </form>
         <allComments v-for="c in comments" :key="c.body" :comments-prop="c" />
       </div>
     </div>
@@ -20,7 +26,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import { allBlogsService } from '../services/AllBlogsService'
 import allComments from '../components/AllCommentsComponent'
@@ -28,14 +34,22 @@ import { AppState } from '../AppState'
 export default {
   name: 'ActiveBlog',
   setup() {
+    const state = reactive({
+      body: '',
+      newComment: {}
+    })
     const route = useRoute()
     onMounted(() => {
       allBlogsService.getActiveBlog(route.params.blogId)
       allBlogsService.getComments(route.params.blogId)
     })
     return {
+      state,
       activeBlog: computed(() => AppState.activeBlog),
-      comments: computed(() => AppState.comments)
+      comments: computed(() => AppState.comments),
+      createComments() {
+        allBlogsService.createComments(state.body)
+      }
     }
   },
   components: {
