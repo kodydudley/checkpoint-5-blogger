@@ -10,12 +10,6 @@
           <div class="col-8 offset-2 my-2">
             <input type="text" placeholder="Blog Body" class="form-control" v-model="state.newBlog.body">
           </div>
-          <div class="col-8 offset-2 my-2">
-            <input type="text" placeholder="Image Url" class="form-control" v-model="state.newBlog.imgUrl">
-          </div>
-          <div class="col-8 offset-2 my-2">
-            <input type="text" placeholder="Blog Tags" class="form-control" v-model="state.newBlog.tags">
-          </div>
           <button type="submit" class="btn bg-transparent grow">
             <h2><i class="far fa-plus-square"></i></h2>
           </button>
@@ -50,13 +44,12 @@ export default {
     })
     onMounted(() => {
       allBlogsService.getAllBlogs()
-      allBlogsService.createBlog()
     })
     return {
       state,
       blogs: computed(() => AppState.allBlogs),
-      createBlog() {
-        allBlogsService.createBlog(state.newBlog)
+      createBlog(blogData) {
+        allBlogsService.createBlog(blogData)
       }
     }
   },
