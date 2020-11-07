@@ -47,9 +47,11 @@ export default {
     })
     return {
       state,
+      profile: computed(() => AppState.profile),
       blogs: computed(() => AppState.allBlogs),
-      createBlog(blogData) {
-        allBlogsService.createBlog(blogData)
+      createBlog() {
+        console.log(state.newBlog.title, state.newBlog.body)
+        allBlogsService.createBlog(state.newBlog)
       }
     }
   },

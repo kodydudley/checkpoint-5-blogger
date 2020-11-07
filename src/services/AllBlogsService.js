@@ -1,3 +1,4 @@
+import router from '../router'
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
 
@@ -22,16 +23,22 @@ class AllBlogsService {
     }
   }
 
-  async createBlog(title, body, published) {
+  async createBlog(data) {
     try {
-      const newBlog = {
-        title: title,
-        body: body,
-        published: true
-      }
-      const res = await api.post('api/blogs/', newBlog)
-      console.log(res)
+      const res = await api.post('api/blogs/', data)
+      router.push({ name: 'Profile' })
       this.getAllBlogs()
+      console.log(res.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async deleteBlog(blogId) {
+    try {
+      const res = await api.delete('api/blogs/' + blogId)
+      this.getAllBlogs()
+      console.log(res)
     } catch (error) {
       console.error(error)
     }
@@ -56,6 +63,16 @@ class AllBlogsService {
       const res = await api.get('api/blogs/' + blogId + '/comments')
       AppState.comments = res.data
       console.log(res)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async getProfileBlogs() {
+    try {
+      const res = await api.get('api/profile/blogs')
+      console.log(res.data)
+      AppState.profileBlogs = res.data
     } catch (error) {
       console.error(error)
     }

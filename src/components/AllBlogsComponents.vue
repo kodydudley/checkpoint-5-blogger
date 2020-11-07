@@ -8,17 +8,25 @@
         <h6>
           Author: {{ blogsProp.creator.name }}
         </h6>
+        <button class="btn btn-danger" @click="deleteBlog">
+          Delete Blog
+        </button>
       </div>
     </router-link>
   </div>
 </template>
 
 <script>
+// import { allBlogsService } from '../services/AllBlogsService'
 export default {
   name: 'AllBlogs',
   props: ['blogsProp'],
   setup() {
-    return {}
+    return {
+      // deleteBlog() {
+      //   allBlogsService.deleteBlog(route.params.blogId)
+      // }
+    }
   },
   components: {}
 }
