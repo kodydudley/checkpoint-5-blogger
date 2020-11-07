@@ -2,13 +2,32 @@
   <div class="home">
     <div class="row my-3">
       <div class="col-12 text-center">
-        <h1>Blogs</h1>
-        <button class="btn bg-transparent grow">
-          <h2><i class="far fa-plus-square"></i></h2>
-        </button>
+        <h6>Create Your Own Blog</h6>
+        <form @submit.prevent="createBlog" action="">
+          <div class="col-8 offset-2 my-2">
+            <input type="text" placeholder="Blog Title" class="form-control" v-model="state.newBlog.title">
+          </div>
+          <div class="col-8 offset-2 my-2">
+            <input type="text" placeholder="Blog Body" class="form-control" v-model="state.newBlog.body">
+          </div>
+          <div class="col-8 offset-2 my-2">
+            <input type="text" placeholder="Image Url" class="form-control" v-model="state.newBlog.imgUrl">
+          </div>
+          <div class="col-8 offset-2 my-2">
+            <input type="text" placeholder="Blog Tags" class="form-control" v-model="state.newBlog.tags">
+          </div>
+          <button type="submit" class="btn bg-transparent grow">
+            <h2><i class="far fa-plus-square"></i></h2>
+          </button>
+        </form>
       </div>
     </div>
     <div class="row">
+      <div class="col-12">
+        <h1 class="text-center text-primary">
+          View All Blogs
+        </h1>
+      </div>
       <div class="col-10 offset-1">
         <div class="row">
           <allBlogs v-for="b in blogs" :key="b.title" :blogs-prop="b" />
@@ -19,16 +38,26 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { allBlogsService } from '../services/AllBlogsService'
 import allBlogs from '../components/AllBlogsComponents'
 export default {
   name: 'Home',
   setup() {
-    onMounted(() => { allBlogsService.getAllBlogs() })
+    const state = reactive({
+      newBlog: {}
+    })
+    onMounted(() => {
+      allBlogsService.getAllBlogs()
+      allBlogsService.createBlog()
+    })
     return {
-      blogs: computed(() => AppState.allBlogs)
+      state,
+      blogs: computed(() => AppState.allBlogs),
+      createBlog() {
+        allBlogsService.createBlog(state.newBlog)
+      }
     }
   },
   components: { allBlogs }

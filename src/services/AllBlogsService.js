@@ -22,10 +22,31 @@ class AllBlogsService {
     }
   }
 
-  async createBlog() {
+  async createBlog(blogData) {
     try {
-      AppState.allBlogs.push('/')
-      console.log(AppState.allBlogs)
+      // const newBlog = {
+      //   title: title,
+      //   body: body,
+      //   imgUrl: imgUrl,
+      //   tags: tags
+      // }
+      const res = await api.post('api/blogs/', blogData)
+      this.getAllBlogs()
+      console.log(res)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async createComments(data) {
+    try {
+      const newComment = {
+        body: data,
+        blog: AppState.activeBlog.id
+      }
+      const res = await api.post('api/comments', newComment)
+      this.getComments(AppState.activeBlog.id)
+      console.log(res)
     } catch (error) {
       console.error(error)
     }
@@ -35,17 +56,6 @@ class AllBlogsService {
     try {
       const res = await api.get('api/blogs/' + blogId + '/comments')
       AppState.comments = res.data
-      console.log(res)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  async createComments(data) {
-    try {
-      const newComment = { body: data, blog: AppState.activeBlog.id }
-      const res = await api.post('api/comments', newComment)
-      this.getComments(AppState.activeBlog.id)
       console.log(res)
     } catch (error) {
       console.error(error)
