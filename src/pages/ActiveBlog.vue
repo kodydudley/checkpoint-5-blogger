@@ -2,7 +2,12 @@
   <div class="activeBlog container-fluid body-font" v-if="activeBlog.id">
     <div class="row">
       <div class="col-6 offset-3 text-center mt-5 text-dark bg-transparent">
-        <img :src="activeBlog.creator.picture" style="height:200px" alt="" srcset="" class="img-fluid">
+        <img :src="activeBlog.creator.picture"
+             style="height:200px"
+             alt=""
+             srcset=""
+             class="img-fluid"
+        >
         <h1 class="m-3">
           Title: {{ activeBlog.title }}
         </h1>
