@@ -6,7 +6,7 @@
           {{ blogsProp.title }}
         </h2>
         <p>
-          Author: {{ blogsProp.creator.name }}
+          Author: {{ blogsProp.creatorEmail }}
         </p>
       </div>
     </router-link>

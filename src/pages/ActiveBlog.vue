@@ -10,8 +10,8 @@
         <h4 class="m-3">
           {{ activeBlog.body }}
         </h4>
-        <div class="col-6">
-          <button class="btn btn-block text-light btn-transparent btn-outline-danger" v-if="blogsProp.creatorEmail == profile.email" @click="deleteBlog(blogId)">
+        <div class="">
+          <button class="btn btn-block btn-transparent btn-outline-danger" @click="deleteBlog(blogId)">
             Delete Blog
           </button>
         </div>
@@ -38,7 +38,6 @@ import allComments from '../components/AllCommentsComponent'
 import { AppState } from '../AppState'
 export default {
   name: 'ActiveBlog',
-  props: 'blogsProp',
   setup() {
     const state = reactive({
       body: '',

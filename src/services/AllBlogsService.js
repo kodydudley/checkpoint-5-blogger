@@ -6,8 +6,8 @@ class AllBlogsService {
   async getAllBlogs() {
     try {
       const res = await api.get('api/blogs')
-      AppState.allBlogs = res.data
       console.log(res.data)
+      AppState.allBlogs = res.data
     } catch (error) {
       console.error(error)
     }
