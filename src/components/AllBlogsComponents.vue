@@ -42,6 +42,7 @@ export default {
       props: computed(() => AppState.activeBlog),
       deleteBlog() {
         allBlogsService.deleteBlog(route.params.blogId)
+        route.push({ name: 'Home' })
       }
     }
   },

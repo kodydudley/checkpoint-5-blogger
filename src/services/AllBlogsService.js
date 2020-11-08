@@ -37,6 +37,7 @@ class AllBlogsService {
   async deleteBlog(blogId) {
     try {
       const res = await api.delete('api/blogs/' + blogId)
+      router.push({ name: 'Home' })
       AppState.allBlogs = res.data
       this.getAllBlogs()
       console.log(res.data)

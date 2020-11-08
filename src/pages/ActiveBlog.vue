@@ -16,7 +16,7 @@
           {{ activeBlog.body }}
         </h4>
         <div class="">
-          <button class="btn btn-block btn-transparent btn-outline-danger" @click="deleteBlog(blogId)">
+          <button class="btn btn-block btn-transparent btn-outline-danger" @click="deleteBlog(blogId)" v-if="profile.email == activeBlog.creatorEmail">
             Delete Blog
           </button>
         </div>
