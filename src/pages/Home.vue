@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <div class="row my-3">
+  <div class="home bg-dark body-font">
+    <div class="row text-light">
       <div class="col-12 text-center">
         <h6>Create Your Own Blog</h6>
         <form @submit.prevent="createBlog" action="">
@@ -18,8 +18,8 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <h1 class="text-center text-primary">
-          View All Blogs
+        <h1 class="text-center text-light">
+          Read Blogs From All Users
         </h1>
       </div>
       <div class="col-10 offset-1">

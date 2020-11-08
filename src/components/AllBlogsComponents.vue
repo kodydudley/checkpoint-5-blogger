@@ -1,18 +1,27 @@
 <template>
-  <div class="allBlogs bg-transparent col-4 justify-content-around ">
+  <div class="allBlogs bg-transparent col-4 justify-content-around body-font">
     <router-link :to="{name: 'ActiveBlog', params: {blogId: blogsProp.id}}">
-      <div class="m-5 text-dark justify-content-between text-center">
-        <h1 class="text-center">
+      <div class=" mt-5 text-light outline-light justify-content-between text-center">
+        <h2 class="text-center">
           {{ blogsProp.title }}
-        </h1>
-        <h6>
+        </h2>
+        <p>
           Author: {{ blogsProp.creator.name }}
-        </h6>
-        <button class="btn btn-danger" v-if="blogsProp.creatorEmail == profile.email" @click="deleteBlog(blogId)">
+        </p>
+      </div>
+    </router-link>
+    <div class="row mt-4 mb-5">
+      <div class="col-6">
+        <button class="btn btn-block text-light btn-transparent btn-outline-warning" v-if="blogsProp.creatorEmail == profile.email">
+          Edit Blog
+        </button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-block text-light btn-transparent btn-outline-danger" v-if="blogsProp.creatorEmail == profile.email" @click="deleteBlog(blogId)">
           Delete Blog
         </button>
       </div>
-    </router-link>
+    </div>
   </div>
 </template>
 
@@ -31,7 +40,7 @@ export default {
     return {
       profile: computed(() => AppState.profile),
       props: computed(() => AppState.activeBlog),
-      deleteBlog(blogId) {
+      deleteBlog() {
         allBlogsService.deleteBlog(route.params.blogId)
       }
     }

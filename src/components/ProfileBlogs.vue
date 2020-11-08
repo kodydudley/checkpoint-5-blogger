@@ -1,12 +1,21 @@
 <template>
-  <div class="ProfileBlogs">
+  <div class="ProfileBlogs body-font">
     <div class="row">
-      <div class="card col-6 offset-3 text-center my-3 shadow-sm">
+      <div class="col-6 offset-3 text-center my-3">
         <h2>{{ blogs.title }}</h2>
         <h6>{{ blogs.body }}</h6>
-        <button @click="deleteBlog()" class="btn btn-danger col-4 offset-4 mb-3">
-          Delete Blog Post
-        </button>
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-warning col-6  mb-3">
+              Edit Blog Post
+            </button>
+          </div>
+          <div class="col-6">
+            <button @click="deleteBlog()" class="btn btn-danger col-6  mb-3">
+              Delete Blog Post
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

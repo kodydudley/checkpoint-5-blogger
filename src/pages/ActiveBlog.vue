@@ -1,8 +1,8 @@
 <template>
-  <div class="activeBlog container-fluid" v-if="activeBlog.id">
+  <div class="activeBlog container-fluid body-font" v-if="activeBlog.id">
     <div class="row">
       <div class="col-6 offset-3 text-center mt-5 text-dark bg-transparent">
-        <img :src="activeBlog.creator.picture" alt="" srcset="" class="img-fluid">
+        <img :src="activeBlog.creator.picture" style="height:200px" alt="" srcset="" class="img-fluid">
         <h1 class="m-3">
           Title: {{ activeBlog.title }}
         </h1>
@@ -10,6 +10,11 @@
         <h4 class="m-3">
           {{ activeBlog.body }}
         </h4>
+        <div class="col-6">
+          <button class="btn btn-block text-light btn-transparent btn-outline-danger" v-if="blogsProp.creatorEmail == profile.email" @click="deleteBlog(blogId)">
+            Delete Blog
+          </button>
+        </div>
         <h2 class="mt-5">
           Comments:
         </h2>
@@ -33,10 +38,12 @@ import allComments from '../components/AllCommentsComponent'
 import { AppState } from '../AppState'
 export default {
   name: 'ActiveBlog',
+  props: 'blogsProp',
   setup() {
     const state = reactive({
       body: '',
-      newComment: {}
+      newComment: {},
+      props: ['blogsProp']
     })
     const route = useRoute()
     onMounted(() => {
@@ -50,6 +57,9 @@ export default {
       comments: computed(() => AppState.comments),
       createComments() {
         allBlogsService.createComments(state.body)
+      },
+      deleteBlog() {
+        allBlogsService.deleteBlog(route.params.blogId)
       }
     }
   },

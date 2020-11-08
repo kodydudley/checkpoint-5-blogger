@@ -1,7 +1,7 @@
 import Axios from 'axios'
 export const api = Axios.create({
   baseURL: 'https://cw-bloggr.herokuapp.com',
-  timeout: 5000
+  timeout: 10000
 })
 
 // NOTE remember to add the auth headers to any axios instance you need auth on.

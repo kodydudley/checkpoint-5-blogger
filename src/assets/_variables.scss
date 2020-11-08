@@ -1,19 +1,19 @@
 $body-bg: #f2f2f2;
 $primary: #3BA5DC;
-$secondary: #FF3697;
+$secondary: #808080;
 $danger: #EB5757;
 $success: #27AE60;
-$warning: #FF7F50;
+$warning: #d3d303;
 $info: #00C9BD;
 $dark: #212322;
 
-$blue: blue;
+$blue: #0000ff;
 $indigo: indigo;
 $purple: purple;
 $pink: pink;
 $red: red;
 $orange: orange;
-$yellow: yellow;
+$yellow: #ebeb06;
 $green: green;
 $teal: teal;
 $cyan: cyan;
@@ -21,8 +21,15 @@ $white: white;
 $gray: gray;
 $gray-dark: darkslategray;
 
-$colors: (
-  "blue": $blue,
+.header-font {
+  font-family: 'Anton', sans-serif;
+}
+
+.body-font {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+$colors: ("blue": $blue,
   "indigo": $indigo,
   "purple": $purple,
   "pink": $pink,
