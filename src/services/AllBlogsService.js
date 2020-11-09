@@ -46,9 +46,9 @@ class AllBlogsService {
     }
   }
 
-  async deleteComment(blogId) {
+  async deleteComment(commentId) {
     try {
-      const res = await api.delete('api/comments/' + blogId)
+      const res = await api.delete('api/comments/' + commentId)
       // router.push({ name: 'Home' })
       AppState.comments = res.data
       console.log(res.data)

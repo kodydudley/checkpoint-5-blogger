@@ -25,7 +25,7 @@
         </h2>
         <form v-if="profile.email" @submit.prevent="createComments" action="">
           <input class="mt-3 mb-3" v-model="state.body">
-          <button type="submit" class="btn text-success btn-transparent btn-large">
+          <button type="submit" class="btn text-success btn-transparent btn-lg">
             <i class="far fa-plus-square"></i>
           </button>
         </form>
