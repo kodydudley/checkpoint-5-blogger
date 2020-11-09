@@ -56,6 +56,16 @@ class AllBlogsService {
     }
   }
 
+  async editComment(commentId, body) {
+    try {
+      const res = await api.put('api/comments/' + commentId, body)
+      AppState.comments = res.data
+      console.log(res.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   async deleteComment(commentId) {
     try {
       const res = await api.delete('api/comments/' + commentId)
