@@ -14,14 +14,18 @@
 
 <script>
 import { allBlogsService } from '../services/AllBlogsService'
+import { useRoute } from 'vue-router'
 export default {
   name: 'AllComments',
   props: ['commentsProp'],
 
   setup(props) {
+    const route = useRoute()
+
     return {
       deleteComment() {
         allBlogsService.deleteComment(props.commentsProp._id)
+        route.push({ name: 'Profile' })
       }
     }
   },
