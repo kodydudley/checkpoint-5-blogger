@@ -10,7 +10,7 @@
           <div class="col-8 offset-2 my-2">
             <input type="text" placeholder="Blog Body" class="form-control" v-model="state.newBlog.body">
           </div>
-          <button type="submit" class="btn bg-transparent grow">
+          <button type="submit" class="btn bg-transparent grow text-success">
             <h2><i class="far fa-plus-square"></i></h2>
           </button>
         </form>

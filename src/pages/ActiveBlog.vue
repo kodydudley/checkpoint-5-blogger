@@ -25,7 +25,7 @@
         </h2>
         <form v-if="profile.email" @submit.prevent="createComments" action="">
           <input class="mt-3 mb-3" v-model="state.body">
-          <button type="submit">
+          <button type="submit" class="btn text-success btn-transparent btn-large">
             <i class="far fa-plus-square"></i>
           </button>
         </form>
@@ -61,6 +61,7 @@ export default {
       comments: computed(() => AppState.comments),
       createComments() {
         allBlogsService.createComments(state.body)
+        route.push({ name: 'Home' })
       },
       deleteBlog() {
         allBlogsService.deleteBlog(route.params.blogId)

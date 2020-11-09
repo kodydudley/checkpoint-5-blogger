@@ -46,6 +46,17 @@ class AllBlogsService {
     }
   }
 
+  async deleteComment(blogId) {
+    try {
+      const res = await api.delete('api/comments/' + blogId)
+      // router.push({ name: 'Home' })
+      AppState.comments = res.data
+      console.log(res.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   async createComments(data) {
     try {
       const newComment = {
