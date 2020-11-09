@@ -69,7 +69,7 @@ class AllBlogsService {
   async deleteComment(commentId) {
     try {
       await api.delete('api/comments/' + commentId)
-      // router.push({ name: 'Home' })
+      router.push({ name: 'Home' })
     } catch (error) {
       console.error(error)
     }
