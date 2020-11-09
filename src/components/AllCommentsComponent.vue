@@ -5,7 +5,7 @@
     </h5>
     <h3 class="mb-4">
       {{ commentsProp.body }}
-      <button @click="deleteComment()" class=" d-flex float-right text-danger btn btn-sm">
+      <button @click="deleteComment(commentId)" class=" d-flex float-right text-danger btn btn-sm">
         <i class="far fa-trash-alt"></i>
       </button>
     </h3>
