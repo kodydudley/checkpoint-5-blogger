@@ -21,6 +21,7 @@ export const AuthService = Auth0Provider.initialize({
 
 AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   setBearer(AuthService.bearer)
+  await profileService.getProfile()
   AppState.user = AuthService.user
   profileService.getProfile()
   allBlogsService.getAllBlogs()
