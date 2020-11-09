@@ -8,7 +8,13 @@
             <input type="text" placeholder="Blog Title" class="form-control" v-model="state.newBlog.title">
           </div>
           <div class="col-8 offset-2 my-2">
-            <input type="text" placeholder="Blog Body" class="form-control" v-model="state.newBlog.body">
+            <textarea v-model="state.newBlog.body"
+                      placeholder="Blog Body"
+                      name=""
+                      id=""
+                      cols="110"
+                      rows="2"
+            ></textarea>
           </div>
           <button type="submit" class="btn bg-transparent grow text-success">
             <h2><i class="far fa-plus-square"></i></h2>

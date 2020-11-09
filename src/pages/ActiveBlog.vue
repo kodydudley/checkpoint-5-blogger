@@ -20,6 +20,12 @@
             Delete Blog
           </button>
         </div>
+        <form class="form-group" @submit.prevent="editBlog">
+          <textarea v-model="state.editBlog.body" name="" id="" cols="30" rows="2"></textarea>
+          <button class="btn btn-block btn-transparent btn-outline-danger" type="submit">
+            Edit Blog
+          </button>
+        </form>
         <h2 class="mt-5">
           Comments:
         </h2>
@@ -47,7 +53,8 @@ export default {
     const state = reactive({
       body: '',
       newComment: {},
-      props: ['blogsProp']
+      props: ['blogsProp'],
+      editBlog: {}
     })
     const route = useRoute()
     onMounted(() => {
@@ -65,6 +72,9 @@ export default {
       },
       deleteBlog() {
         allBlogsService.deleteBlog(route.params.blogId)
+      },
+      editBlog() {
+        allBlogsService.editBlog(route.params.blogId, state.editBlog)
       }
     }
   },
