@@ -21,7 +21,7 @@
           </button>
         </div>
         <form class="form-group" @submit.prevent="editBlog">
-          <textarea v-model="state.editBlog.body"
+          <textarea v-model="activeBlog.body"
                     name=""
                     id=""
                     cols="30"
@@ -81,7 +81,7 @@ export default {
         allBlogsService.deleteBlog(route.params.blogId)
       },
       editBlog() {
-        allBlogsService.editBlog(route.params.blogId, state.editBlog)
+        allBlogsService.editBlog(route.params.blogId, this.activeBlog)
       }
     }
   },
