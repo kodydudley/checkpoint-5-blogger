@@ -21,7 +21,12 @@
           </button>
         </div>
         <form class="form-group" @submit.prevent="editBlog">
-          <textarea v-model="state.editBlog.body" name="" id="" cols="30" rows="2"></textarea>
+          <textarea v-model="state.editBlog.body"
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="2"
+          ></textarea>
           <button class="btn btn-block btn-transparent btn-outline-danger" type="submit">
             Edit Blog
           </button>
@@ -49,6 +54,8 @@ import allComments from '../components/AllCommentsComponent'
 import { AppState } from '../AppState'
 export default {
   name: 'ActiveBlog',
+  // props: ['blogsProp'],
+
   setup() {
     const state = reactive({
       body: '',
