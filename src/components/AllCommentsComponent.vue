@@ -5,7 +5,7 @@
     </h5>
     <h3 class="mb-4">
       {{ commentsProp.body }}
-      <button @click="deleteComment(commentId)" class=" d-flex float-right text-danger btn btn-sm">
+      <button @click="deleteComment()" class=" d-flex float-right text-danger btn btn-sm">
         <i class="far fa-trash-alt"></i>
       </button>
     </h3>
@@ -13,18 +13,15 @@
 </template>
 
 <script>
-import { useRoute } from 'vue-router'
 import { allBlogsService } from '../services/AllBlogsService'
 export default {
   name: 'AllComments',
   props: ['commentsProp'],
 
-  setup() {
-    const route = useRoute()
-
+  setup(props) {
     return {
       deleteComment() {
-        allBlogsService.deleteComment(route.params.commentsId)
+        allBlogsService.deleteComment(props.commentsProp._id)
       }
     }
   },
